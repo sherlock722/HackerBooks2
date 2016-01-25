@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
-    <entity name="AnotationPhoto" syncable="YES">
+    <entity name="AnotationPhoto" representedClassName="FJCAnotationPhoto" syncable="YES">
         <attribute name="photoData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="anotationPhoto" inverseEntity="Book" syncable="YES"/>
     </entity>
-    <entity name="Author" syncable="YES">
+    <entity name="Author" representedClassName="FJCAuthor" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="books" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="authors" inverseEntity="Book" syncable="YES"/>
     </entity>
@@ -19,12 +19,12 @@
         <relationship name="pdf" maxCount="1" deletionRule="Cascade" destinationEntity="Pdf" inverseName="book" inverseEntity="Pdf" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" syncable="YES"/>
     </entity>
-    <entity name="Localization" syncable="YES">
+    <entity name="Localization" representedClassName="FJCLocalization" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="localization" inverseEntity="Book" syncable="YES"/>
     </entity>
-    <entity name="Pdf" syncable="YES">
+    <entity name="Pdf" representedClassName="FJCPdf" syncable="YES">
         <attribute name="pdfData" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="pdf" inverseEntity="Book" syncable="YES"/>
     </entity>
