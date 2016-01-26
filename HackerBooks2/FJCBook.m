@@ -18,7 +18,11 @@
     
     //Uso el método insertInManagedObjectContext que se ha creado en el _FJCBook
     //la instancia creada estará vacia
-    FJCBook *book = [self insertInManagedObjectContext:context];
+    //FJCBook *book = [self insertInManagedObjectContext:context];
+    
+    //Fault
+    FJCBook * book = [NSEntityDescription insertNewObjectForEntityForName:[FJCBook entityName]
+                                                   inManagedObjectContext:context];
     
     
     //Relleno los atributos

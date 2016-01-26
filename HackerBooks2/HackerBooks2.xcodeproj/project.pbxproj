@@ -20,6 +20,7 @@
 		3B81A6DE1C56EB8500EFC1BC /* FJCPdf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81A6D11C56EB8500EFC1BC /* FJCPdf.m */; };
 		3B81A6DF1C56EB8500EFC1BC /* FJCTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81A6D31C56EB8500EFC1BC /* FJCTag.m */; };
 		3B81A6E41C56F64100EFC1BC /* FJCbookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B81A6E31C56F64100EFC1BC /* FJCbookViewController.m */; };
+		3B94A9E21C582F5B00DEE7A4 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B94A9E11C582F5B00DEE7A4 /* UIViewController+Navigation.m */; };
 		3BC878611C505D7D00D5EBC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC878601C505D7D00D5EBC3 /* main.m */; };
 		3BC878641C505D7D00D5EBC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC878631C505D7D00D5EBC3 /* AppDelegate.m */; };
 		3BC878671C505D7D00D5EBC3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC878661C505D7D00D5EBC3 /* ViewController.m */; };
@@ -58,6 +59,8 @@
 		3B81A6D31C56EB8500EFC1BC /* FJCTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCTag.m; sourceTree = "<group>"; };
 		3B81A6E21C56F64100EFC1BC /* FJCbookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJCbookViewController.h; sourceTree = "<group>"; };
 		3B81A6E31C56F64100EFC1BC /* FJCbookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJCbookViewController.m; sourceTree = "<group>"; };
+		3B94A9E01C582F5B00DEE7A4 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
+		3B94A9E11C582F5B00DEE7A4 /* UIViewController+Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navigation.m"; sourceTree = "<group>"; };
 		3BC8785C1C505D7D00D5EBC3 /* HackerBooks2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerBooks2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC878601C505D7D00D5EBC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3BC878621C505D7D00D5EBC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +127,15 @@
 			name = Human;
 			sourceTree = "<group>";
 		};
+		3B94A9DF1C582ECB00DEE7A4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3B94A9E01C582F5B00DEE7A4 /* UIViewController+Navigation.h */,
+				3B94A9E11C582F5B00DEE7A4 /* UIViewController+Navigation.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		3BC878531C505D7D00D5EBC3 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +155,7 @@
 		3BC8785E1C505D7D00D5EBC3 /* HackerBooks2 */ = {
 			isa = PBXGroup;
 			children = (
+				3B94A9DF1C582ECB00DEE7A4 /* Categories */,
 				3BC8787D1C505E9900D5EBC3 /* Controllers */,
 				3BC878761C505DA100D5EBC3 /* Models */,
 				3BC878621C505D7D00D5EBC3 /* AppDelegate.h */,
@@ -277,6 +290,7 @@
 				3B81A6DB1C56EB8500EFC1BC /* FJCAuthor.m in Sources */,
 				3B81A6DE1C56EB8500EFC1BC /* FJCPdf.m in Sources */,
 				3B81A6DC1C56EB8500EFC1BC /* FJCBook.m in Sources */,
+				3B94A9E21C582F5B00DEE7A4 /* UIViewController+Navigation.m in Sources */,
 				3BC878791C505DD700D5EBC3 /* AGTCoreDataStack.m in Sources */,
 				3B81A6D91C56EB8500EFC1BC /* _FJCTag.m in Sources */,
 				3BC878611C505D7D00D5EBC3 /* main.m in Sources */,

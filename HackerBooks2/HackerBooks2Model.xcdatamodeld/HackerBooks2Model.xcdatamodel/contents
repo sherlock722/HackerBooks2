@@ -13,11 +13,11 @@
         <attribute name="creationBook" attributeType="Date" syncable="YES"/>
         <attribute name="modificationBook" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="anotationPhoto" maxCount="1" deletionRule="Cascade" destinationEntity="AnotationPhoto" inverseName="book" inverseEntity="AnotationPhoto" syncable="YES"/>
-        <relationship name="authors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
-        <relationship name="localization" maxCount="1" deletionRule="Cascade" destinationEntity="Localization" inverseName="book" inverseEntity="Localization" syncable="YES"/>
+        <relationship name="anotationPhoto" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AnotationPhoto" inverseName="book" inverseEntity="AnotationPhoto" syncable="YES"/>
+        <relationship name="authors" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
+        <relationship name="localization" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Localization" inverseName="book" inverseEntity="Localization" syncable="YES"/>
         <relationship name="pdf" maxCount="1" deletionRule="Cascade" destinationEntity="Pdf" inverseName="book" inverseEntity="Pdf" syncable="YES"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tags" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Localization" representedClassName="FJCLocalization" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
