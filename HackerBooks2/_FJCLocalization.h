@@ -4,6 +4,7 @@
 @import CoreData;
 
 extern const struct FJCLocalizationAttributes {
+	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *latitude;
 	__unsafe_unretained NSString *longitude;
 } FJCLocalizationAttributes;
@@ -23,19 +24,23 @@ extern const struct FJCLocalizationRelationships {
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) FJCLocalizationID* objectID;
 
+@property (nonatomic, strong) NSString* address;
+
+//- (BOOL)validateAddress:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) NSNumber* latitude;
 
-@property (atomic) float latitudeValue;
-- (float)latitudeValue;
-- (void)setLatitudeValue:(float)value_;
+@property (atomic) double latitudeValue;
+- (double)latitudeValue;
+- (void)setLatitudeValue:(double)value_;
 
 //- (BOOL)validateLatitude:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSNumber* longitude;
 
-@property (atomic) float longitudeValue;
-- (float)longitudeValue;
-- (void)setLongitudeValue:(float)value_;
+@property (atomic) double longitudeValue;
+- (double)longitudeValue;
+- (void)setLongitudeValue:(double)value_;
 
 //- (BOOL)validateLongitude:(id*)value_ error:(NSError**)error_;
 
@@ -47,17 +52,20 @@ extern const struct FJCLocalizationRelationships {
 
 @interface _FJCLocalization (CoreDataGeneratedPrimitiveAccessors)
 
+- (NSString*)primitiveAddress;
+- (void)setPrimitiveAddress:(NSString*)value;
+
 - (NSNumber*)primitiveLatitude;
 - (void)setPrimitiveLatitude:(NSNumber*)value;
 
-- (float)primitiveLatitudeValue;
-- (void)setPrimitiveLatitudeValue:(float)value_;
+- (double)primitiveLatitudeValue;
+- (void)setPrimitiveLatitudeValue:(double)value_;
 
 - (NSNumber*)primitiveLongitude;
 - (void)setPrimitiveLongitude:(NSNumber*)value;
 
-- (float)primitiveLongitudeValue;
-- (void)setPrimitiveLongitudeValue:(float)value_;
+- (double)primitiveLongitudeValue;
+- (void)setPrimitiveLongitudeValue:(double)value_;
 
 - (FJCBook*)primitiveBook;
 - (void)setPrimitiveBook:(FJCBook*)value;

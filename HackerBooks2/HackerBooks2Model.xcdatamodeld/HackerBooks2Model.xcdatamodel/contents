@@ -20,8 +20,9 @@
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Localization" representedClassName="FJCLocalization" syncable="YES">
-        <attribute name="latitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="localization" inverseEntity="Book" syncable="YES"/>
     </entity>
     <entity name="Pdf" representedClassName="FJCPdf" syncable="YES">
@@ -33,11 +34,11 @@
         <relationship name="books" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="Tag" positionX="-63" positionY="-9" width="128" height="75"/>
-        <element name="Pdf" positionX="-45" positionY="27" width="128" height="75"/>
-        <element name="Author" positionX="-36" positionY="45" width="128" height="75"/>
-        <element name="Localization" positionX="-27" positionY="63" width="128" height="90"/>
         <element name="AnotationPhoto" positionX="-9" positionY="81" width="128" height="90"/>
+        <element name="Author" positionX="-36" positionY="45" width="128" height="75"/>
+        <element name="Book" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Localization" positionX="-27" positionY="63" width="128" height="30"/>
+        <element name="Pdf" positionX="-45" positionY="27" width="128" height="75"/>
+        <element name="Tag" positionX="-63" positionY="-9" width="128" height="75"/>
     </elements>
 </model>

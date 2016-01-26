@@ -4,6 +4,7 @@
 #import "_FJCLocalization.h"
 
 const struct FJCLocalizationAttributes FJCLocalizationAttributes = {
+	.address = @"address",
 	.latitude = @"latitude",
 	.longitude = @"longitude",
 };
@@ -52,43 +53,45 @@ const struct FJCLocalizationRelationships FJCLocalizationRelationships = {
 	return keyPaths;
 }
 
+@dynamic address;
+
 @dynamic latitude;
 
-- (float)latitudeValue {
+- (double)latitudeValue {
 	NSNumber *result = [self latitude];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setLatitudeValue:(float)value_ {
+- (void)setLatitudeValue:(double)value_ {
 	[self setLatitude:@(value_)];
 }
 
-- (float)primitiveLatitudeValue {
+- (double)primitiveLatitudeValue {
 	NSNumber *result = [self primitiveLatitude];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setPrimitiveLatitudeValue:(float)value_ {
+- (void)setPrimitiveLatitudeValue:(double)value_ {
 	[self setPrimitiveLatitude:@(value_)];
 }
 
 @dynamic longitude;
 
-- (float)longitudeValue {
+- (double)longitudeValue {
 	NSNumber *result = [self longitude];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setLongitudeValue:(float)value_ {
+- (void)setLongitudeValue:(double)value_ {
 	[self setLongitude:@(value_)];
 }
 
-- (float)primitiveLongitudeValue {
+- (double)primitiveLongitudeValue {
 	NSNumber *result = [self primitiveLongitude];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setPrimitiveLongitudeValue:(float)value_ {
+- (void)setPrimitiveLongitudeValue:(double)value_ {
 	[self setPrimitiveLongitude:@(value_)];
 }
 
