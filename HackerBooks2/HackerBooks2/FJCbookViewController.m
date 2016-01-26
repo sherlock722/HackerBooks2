@@ -27,7 +27,7 @@
     
     static NSString *cellID = @"NotebookCell";
     
-    // Averiguar qué libreta es
+    // Averiguar qué libro es
      FJCBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Crear la celda
@@ -36,7 +36,7 @@
         // Creamos la celda de la nada
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
-    // Sincronizar libreta -> celda
+    // Sincronizar libro y celda
     cell.textLabel.text = book.title;
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateStyle = NSDateFormatterShortStyle;
