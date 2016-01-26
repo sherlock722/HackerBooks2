@@ -12,7 +12,7 @@
     <entity name="Book" representedClassName="FJCBook" syncable="YES">
         <attribute name="creationBook" attributeType="Date" syncable="YES"/>
         <attribute name="modificationBook" attributeType="Date" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="anotationPhoto" maxCount="1" deletionRule="Cascade" destinationEntity="AnotationPhoto" inverseName="book" inverseEntity="AnotationPhoto" syncable="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
         <relationship name="localization" maxCount="1" deletionRule="Cascade" destinationEntity="Localization" inverseName="book" inverseEntity="Localization" syncable="YES"/>
