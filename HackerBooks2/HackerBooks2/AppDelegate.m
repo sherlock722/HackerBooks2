@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "AGTCoreDataStack.h"
+#import "FJCBook.h"
+
 
 @interface AppDelegate ()
+@property (strong, nonatomic) AGTCoreDataStack *model;
 
 @end
 
@@ -17,6 +21,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Inicializo el Stack de Core Data
+    self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Everpobre"];
+    
+    [self createDummyData];
+    
+    
+    
     return YES;
 }
 
@@ -41,5 +53,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
+#pragma marks - Utils
+
+-(void) createDummyData {
+    
+        
+        // Creo un libro de prueba2
+        FJCBook *book=[FJCBook bookWithTitle:@"Libro1"
+                                  context:self.model.context];
+        
+        NSLog(@"%@",book);
+    
+}
+
+
+
 
 @end
