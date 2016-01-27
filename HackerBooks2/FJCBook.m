@@ -34,5 +34,12 @@
 
 }
 
++(instancetype) bookWithDictionary:(NSDictionary *)aDict
+                         inContext:(NSManagedObjectContext *) aContext{
+    
+    return [self bookWithTitle:[aDict objectForKey:@"title"]
+                       context:aContext];
+}
+
 
 @end
