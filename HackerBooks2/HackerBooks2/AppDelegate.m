@@ -28,36 +28,26 @@
                                  context:self.model.context];*/
     
     //Se recupera la información de los libros del JSON
-    NSURL *urlbooks = [NSURL URLWithString:@"books_readable.json"];
     
-    //Se crea el request
-    //NSMutableURLRequest *requestBooks = [[NSMutableURLRequest alloc] initWithURL:urlbooks];
+    //NSError *error;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"books_readable" ofType:@"json"];
+    NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+
+    /*if(error) {
+        NSLog(@"Error reading file: %@", error.localizedDescription);
+    }*/
     
-    //Utilizamos el método POST indicando el Content-Type
-    //[requestBooks setHTTPMethod:@"POST"];
-    //[requestBooks setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSArray *arrayBooks = (NSArray *)[NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
     
-    //Se recogen los datos del servicio de aerolineas
-    NSData *requestDataBooks = [NSData dataWithContentsOfURL:urlbooks];
     
-    // No ha habido error
-    NSError *error;
-    NSArray * JSONObjectsBooks = [NSJSONSerialization JSONObjectWithData:requestDataBooks
-                                                                   options:kNilOptions
-                                                                     error:&error];
-    
-    if (JSONObjectsBooks != nil) {
-        
-        // No ha habido error
-        for(NSDictionary *dictBook in JSONObjectsBooks){
+    for(NSDictionary *dictBook in arrayBooks){
             
-            FJCBook * book = [FJCBook bookWithDictionary:dictBook inContext:self.model.context];
+            FJCBook * book = [FJCBook bookWithDictionary:dictBook
+                                               inContext:self.model.context];
         
             NSLog(@"Carga de Libros con titulo %@",book.title);
             
-        }
     }
-    
     
 }
 
