@@ -29,16 +29,19 @@
     
     //Se recupera la información de los libros del JSON
     
-    //NSError *error;
+    NSError *error;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"books_readable" ofType:@"json"];
-    NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    /*NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];*/
+    
+    NSData *myJSONData =[NSData dataWithContentsOfFile:filePath];
 
     /*if(error) {
         NSLog(@"Error reading file: %@", error.localizedDescription);
     }*/
     
-    NSArray *arrayBooks = (NSArray *)[NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
-    
+    /*NSArray *arrayBooks = (NSArray *)[NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];*/
+
+    NSArray *arrayBooks = [NSJSONSerialization JSONObjectWithData:myJSONData options:0 error:&error];
     
     for(NSDictionary *dictBook in arrayBooks){
             
