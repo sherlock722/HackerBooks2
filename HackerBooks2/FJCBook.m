@@ -81,6 +81,7 @@
                                        tag:element
                                    context:context];
     }];*/
+    
     //[b addBookTags:[NSSet setWithArray:bookTags]];
     
     
@@ -94,8 +95,8 @@
     return [self bookWithTitle:[aDict objectForKey:@"title"]
                        authors:[aDict objectForKey:@"authors"]
                           tags:[aDict objectForKey:@"tags"]
-                    coverPhoto:nil
-                           pdf:nil
+                    coverPhoto:[FJCBookCoverPhoto insertInManagedObjectContext:aContext]
+                           pdf:[FJCPdf insertInManagedObjectContext:aContext]
                        context:aContext];
     
 }

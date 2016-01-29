@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "AGTCoreDataStack.h"
 #import "FJCBook.h"
-#import "FJCbookViewController.h"
+#import "FJCLibraryViewController.h"
 #import "UIViewController+Navigation.h"
 
 @interface AppDelegate ()
@@ -81,7 +81,7 @@
     NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:r managedObjectContext:self.model.context sectionNameKeyPath:nil cacheName:nil];
     
     // El Controlador de tabla
-    FJCbookViewController *bookVC = [[FJCbookViewController alloc]initWithFetchedResultsController:fc style:UITableViewStylePlain];
+    FJCLibraryViewController *bookVC = [[FJCLibraryViewController alloc]initWithFetchedResultsController:fc style:UITableViewStylePlain];
     
 
     self.window.rootViewController = [bookVC wrappedInNavigation];

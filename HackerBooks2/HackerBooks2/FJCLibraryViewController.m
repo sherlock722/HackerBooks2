@@ -1,15 +1,16 @@
 //
-//  FJCbookViewController.m
+//  FJCLibraryViewController.m
 //  HackerBooks2
 //
-//  Created by Javier Cazorla Moriche on 26/1/16.
+//  Created by Javier Cazorla Moriche on 29/1/16.
 //  Copyright © 2016 FJC. All rights reserved.
 //
 
-#import "FJCbookViewController.h"
+#import "FJCLibraryViewController.h"
 #import "FJCBook.h"
+#import "FJCBookViewController.h"
 
-@implementation FJCbookViewController
+@implementation FJCLibraryViewController
 
 - (void)viewDidLoad {
     
@@ -23,12 +24,13 @@
     // Dispose of any resources that can be recreated.
 }
 
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell*)tableView:(UITableView *)
+tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellID = @"NotebookCell";
     
     // Averiguar qué libro es
-     FJCBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    FJCBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Crear la celda
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
@@ -51,11 +53,11 @@
     cell.detailTextLabel.text = [fmt stringFromDate:book.lastRead];
     
     /*NSURL *url = [NSURL URLWithString:@"https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiJ8LCCmcvKAhUKVhoKHUVdBvYQjRwIBw&url=http%3A%2F%2Fwww.javajan.com%2Fnews.php%3Fid%3D1379-rssidioma%3D3&psig=AFQjCNGpJokIqX4GDaqi0wTzxz2L7107TA&ust=1454025439004704"];
-    
-    NSString *newIMAGE = [[NSString alloc] initWithContentsOfURL:url
-                                                        encoding:NSUTF8StringEncoding error:nil];
-    
-    cell.imageView.image = [UIImage imageNamed:newIMAGE];*/
+     
+     NSString *newIMAGE = [[NSString alloc] initWithContentsOfURL:url
+     encoding:NSUTF8StringEncoding error:nil];
+     
+     cell.imageView.image = [UIImage imageNamed:newIMAGE];*/
     
     
     //cell.imageView.image
@@ -65,5 +67,22 @@
 }
 
 
+-(void) tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // Obtener la nota
+    FJCBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    
+    // Crear el controlador
+    FJCBookViewController *bookVC = [[FJCBookViewController alloc]
+     initWithModel:book];
+    
+    // Hacer el push
+    [self.navigationController pushViewController:bookVC
+     animated:YES];
+    
+    
+}
 
 @end
