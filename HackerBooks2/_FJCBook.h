@@ -4,24 +4,23 @@
 @import CoreData;
 
 extern const struct FJCBookAttributes {
-	__unsafe_unretained NSString *creationBook;
-	__unsafe_unretained NSString *modificationBook;
+	__unsafe_unretained NSString *lastRead;
 	__unsafe_unretained NSString *title;
 } FJCBookAttributes;
 
 extern const struct FJCBookRelationships {
-	__unsafe_unretained NSString *anotationPhoto;
+	__unsafe_unretained NSString *anotations;
 	__unsafe_unretained NSString *authors;
-	__unsafe_unretained NSString *localization;
+	__unsafe_unretained NSString *bookCoverPhoto;
+	__unsafe_unretained NSString *bookTags;
 	__unsafe_unretained NSString *pdf;
-	__unsafe_unretained NSString *tags;
 } FJCBookRelationships;
 
-@class FJCAnotationPhoto;
+@class FJCAnotation;
 @class FJCAuthor;
-@class FJCLocalization;
+@class FJCBookCoverPhoto;
+@class FJCBookTag;
 @class FJCPdf;
-@class FJCTag;
 
 @interface FJCBookID : NSManagedObjectID {}
 @end
@@ -32,37 +31,41 @@ extern const struct FJCBookRelationships {
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) FJCBookID* objectID;
 
-@property (nonatomic, strong) NSDate* creationBook;
+@property (nonatomic, strong) NSDate* lastRead;
 
-//- (BOOL)validateCreationBook:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSDate* modificationBook;
-
-//- (BOOL)validateModificationBook:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateLastRead:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSString* title;
 
 //- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) FJCAnotationPhoto *anotationPhoto;
+@property (nonatomic, strong) NSSet *anotations;
 
-//- (BOOL)validateAnotationPhoto:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)anotationsSet;
 
 @property (nonatomic, strong) NSSet *authors;
 
 - (NSMutableSet*)authorsSet;
 
-@property (nonatomic, strong) FJCLocalization *localization;
+@property (nonatomic, strong) FJCBookCoverPhoto *bookCoverPhoto;
 
-//- (BOOL)validateLocalization:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateBookCoverPhoto:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) NSSet *bookTags;
+
+- (NSMutableSet*)bookTagsSet;
 
 @property (nonatomic, strong) FJCPdf *pdf;
 
 //- (BOOL)validatePdf:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSSet *tags;
+@end
 
-- (NSMutableSet*)tagsSet;
+@interface _FJCBook (AnotationsCoreDataGeneratedAccessors)
+- (void)addAnotations:(NSSet*)value_;
+- (void)removeAnotations:(NSSet*)value_;
+- (void)addAnotationsObject:(FJCAnotation*)value_;
+- (void)removeAnotationsObject:(FJCAnotation*)value_;
 
 @end
 
@@ -74,38 +77,35 @@ extern const struct FJCBookRelationships {
 
 @end
 
-@interface _FJCBook (TagsCoreDataGeneratedAccessors)
-- (void)addTags:(NSSet*)value_;
-- (void)removeTags:(NSSet*)value_;
-- (void)addTagsObject:(FJCTag*)value_;
-- (void)removeTagsObject:(FJCTag*)value_;
+@interface _FJCBook (BookTagsCoreDataGeneratedAccessors)
+- (void)addBookTags:(NSSet*)value_;
+- (void)removeBookTags:(NSSet*)value_;
+- (void)addBookTagsObject:(FJCBookTag*)value_;
+- (void)removeBookTagsObject:(FJCBookTag*)value_;
 
 @end
 
 @interface _FJCBook (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSDate*)primitiveCreationBook;
-- (void)setPrimitiveCreationBook:(NSDate*)value;
-
-- (NSDate*)primitiveModificationBook;
-- (void)setPrimitiveModificationBook:(NSDate*)value;
+- (NSDate*)primitiveLastRead;
+- (void)setPrimitiveLastRead:(NSDate*)value;
 
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
 
-- (FJCAnotationPhoto*)primitiveAnotationPhoto;
-- (void)setPrimitiveAnotationPhoto:(FJCAnotationPhoto*)value;
+- (NSMutableSet*)primitiveAnotations;
+- (void)setPrimitiveAnotations:(NSMutableSet*)value;
 
 - (NSMutableSet*)primitiveAuthors;
 - (void)setPrimitiveAuthors:(NSMutableSet*)value;
 
-- (FJCLocalization*)primitiveLocalization;
-- (void)setPrimitiveLocalization:(FJCLocalization*)value;
+- (FJCBookCoverPhoto*)primitiveBookCoverPhoto;
+- (void)setPrimitiveBookCoverPhoto:(FJCBookCoverPhoto*)value;
+
+- (NSMutableSet*)primitiveBookTags;
+- (void)setPrimitiveBookTags:(NSMutableSet*)value;
 
 - (FJCPdf*)primitivePdf;
 - (void)setPrimitivePdf:(FJCPdf*)value;
-
-- (NSMutableSet*)primitiveTags;
-- (void)setPrimitiveTags:(NSMutableSet*)value;
 
 @end

@@ -4,7 +4,7 @@
 #import "_FJCAuthor.h"
 
 const struct FJCAuthorAttributes FJCAuthorAttributes = {
-	.author = @"author",
+	.fullName = @"fullName",
 };
 
 const struct FJCAuthorRelationships FJCAuthorRelationships = {
@@ -40,7 +40,7 @@ const struct FJCAuthorRelationships FJCAuthorRelationships = {
 	return keyPaths;
 }
 
-@dynamic author;
+@dynamic fullName;
 
 @dynamic books;
 

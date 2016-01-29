@@ -1,44 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
+    <entity name="Anotation" representedClassName="FJCAnotation" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="anotationPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnotationPhoto" inverseName="anotations" inverseEntity="AnotationPhoto" syncable="YES"/>
+        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="anotations" inverseEntity="Book" syncable="YES"/>
+    </entity>
     <entity name="AnotationPhoto" representedClassName="FJCAnotationPhoto" syncable="YES">
         <attribute name="photoData" attributeType="Binary" syncable="YES"/>
-        <attribute name="text" attributeType="String" syncable="YES"/>
-        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="anotationPhoto" inverseEntity="Book" syncable="YES"/>
+        <relationship name="anotations" toMany="YES" deletionRule="Nullify" destinationEntity="Anotation" inverseName="anotationPhoto" inverseEntity="Anotation" syncable="YES"/>
     </entity>
     <entity name="Author" representedClassName="FJCAuthor" syncable="YES">
-        <attribute name="author" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" attributeType="String" syncable="YES"/>
         <relationship name="books" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="authors" inverseEntity="Book" syncable="YES"/>
     </entity>
     <entity name="Book" representedClassName="FJCBook" syncable="YES">
-        <attribute name="creationBook" attributeType="Date" syncable="YES"/>
-        <attribute name="modificationBook" attributeType="Date" syncable="YES"/>
+        <attribute name="lastRead" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="anotationPhoto" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AnotationPhoto" inverseName="book" inverseEntity="AnotationPhoto" syncable="YES"/>
+        <relationship name="anotations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Anotation" inverseName="book" inverseEntity="Anotation" syncable="YES"/>
         <relationship name="authors" toMany="YES" deletionRule="Cascade" destinationEntity="Author" inverseName="books" inverseEntity="Author" syncable="YES"/>
-        <relationship name="localization" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Localization" inverseName="book" inverseEntity="Localization" syncable="YES"/>
+        <relationship name="bookCoverPhoto" maxCount="1" deletionRule="Cascade" destinationEntity="BookCoverPhoto" inverseName="book" inverseEntity="BookCoverPhoto" syncable="YES"/>
+        <relationship name="bookTags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookTag" inverseName="book" inverseEntity="BookTag" syncable="YES"/>
         <relationship name="pdf" maxCount="1" deletionRule="Cascade" destinationEntity="Pdf" inverseName="book" inverseEntity="Pdf" syncable="YES"/>
-        <relationship name="tags" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" syncable="YES"/>
     </entity>
-    <entity name="Localization" representedClassName="FJCLocalization" syncable="YES">
-        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="localization" inverseEntity="Book" syncable="YES"/>
+    <entity name="BookCoverPhoto" representedClassName="FJCBookCoverPhoto" syncable="YES">
+        <attribute name="photoCover" attributeType="Binary" syncable="YES"/>
+        <attribute name="remoteURLString" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="bookCoverPhoto" inverseEntity="Book" syncable="YES"/>
+    </entity>
+    <entity name="BookTag" representedClassName="FJCBookTag" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="bookTags" inverseEntity="Book" syncable="YES"/>
+        <relationship name="tag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="bookTags" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Pdf" representedClassName="FJCPdf" syncable="YES">
         <attribute name="pdfData" attributeType="Binary" syncable="YES"/>
+        <attribute name="urlString" attributeType="String" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="pdf" inverseEntity="Book" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="FJCTag" syncable="YES">
-        <attribute name="tag" attributeType="String" syncable="YES"/>
-        <relationship name="books" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" syncable="YES"/>
+        <attribute name="proxyForSorting" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagName" attributeType="String" syncable="YES"/>
+        <relationship name="bookTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookTag" inverseName="tag" inverseEntity="BookTag" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AnotationPhoto" positionX="-9" positionY="81" width="128" height="90"/>
-        <element name="Author" positionX="-36" positionY="45" width="128" height="75"/>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="Localization" positionX="-27" positionY="63" width="128" height="30"/>
-        <element name="Pdf" positionX="-45" positionY="27" width="128" height="75"/>
-        <element name="Tag" positionX="-63" positionY="-9" width="128" height="75"/>
+        <element name="Anotation" positionX="-126" positionY="-342" width="128" height="163"/>
+        <element name="AnotationPhoto" positionX="-92" positionY="-91" width="128" height="73"/>
+        <element name="Author" positionX="-648" positionY="-180" width="128" height="73"/>
+        <element name="Book" positionX="-477" positionY="-390" width="128" height="148"/>
+        <element name="BookCoverPhoto" positionX="-684" positionY="-324" width="128" height="88"/>
+        <element name="Pdf" positionX="-506" positionY="-52" width="128" height="88"/>
+        <element name="Tag" positionX="-279" positionY="-1" width="128" height="88"/>
+        <element name="BookTag" positionX="-299" positionY="-160" width="128" height="88"/>
     </elements>
 </model>

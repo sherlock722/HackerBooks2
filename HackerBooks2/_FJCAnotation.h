@@ -1,32 +1,41 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to FJCLocalization.h instead.
+// Make changes to FJCAnotation.h instead.
 
 @import CoreData;
 
-extern const struct FJCLocalizationAttributes {
+extern const struct FJCAnotationAttributes {
 	__unsafe_unretained NSString *address;
+	__unsafe_unretained NSString *creationDate;
 	__unsafe_unretained NSString *latitude;
 	__unsafe_unretained NSString *longitude;
-} FJCLocalizationAttributes;
+	__unsafe_unretained NSString *modificationDate;
+	__unsafe_unretained NSString *text;
+} FJCAnotationAttributes;
 
-extern const struct FJCLocalizationRelationships {
+extern const struct FJCAnotationRelationships {
+	__unsafe_unretained NSString *anotationPhoto;
 	__unsafe_unretained NSString *book;
-} FJCLocalizationRelationships;
+} FJCAnotationRelationships;
 
+@class FJCAnotationPhoto;
 @class FJCBook;
 
-@interface FJCLocalizationID : NSManagedObjectID {}
+@interface FJCAnotationID : NSManagedObjectID {}
 @end
 
-@interface _FJCLocalization : NSManagedObject {}
+@interface _FJCAnotation : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) FJCLocalizationID* objectID;
+@property (nonatomic, readonly, strong) FJCAnotationID* objectID;
 
 @property (nonatomic, strong) NSString* address;
 
 //- (BOOL)validateAddress:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) NSDate* creationDate;
+
+//- (BOOL)validateCreationDate:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSNumber* latitude;
 
@@ -44,16 +53,31 @@ extern const struct FJCLocalizationRelationships {
 
 //- (BOOL)validateLongitude:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) NSDate* modificationDate;
+
+//- (BOOL)validateModificationDate:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) NSString* text;
+
+//- (BOOL)validateText:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) FJCAnotationPhoto *anotationPhoto;
+
+//- (BOOL)validateAnotationPhoto:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) FJCBook *book;
 
 //- (BOOL)validateBook:(id*)value_ error:(NSError**)error_;
 
 @end
 
-@interface _FJCLocalization (CoreDataGeneratedPrimitiveAccessors)
+@interface _FJCAnotation (CoreDataGeneratedPrimitiveAccessors)
 
 - (NSString*)primitiveAddress;
 - (void)setPrimitiveAddress:(NSString*)value;
+
+- (NSDate*)primitiveCreationDate;
+- (void)setPrimitiveCreationDate:(NSDate*)value;
 
 - (NSNumber*)primitiveLatitude;
 - (void)setPrimitiveLatitude:(NSNumber*)value;
@@ -66,6 +90,15 @@ extern const struct FJCLocalizationRelationships {
 
 - (double)primitiveLongitudeValue;
 - (void)setPrimitiveLongitudeValue:(double)value_;
+
+- (NSDate*)primitiveModificationDate;
+- (void)setPrimitiveModificationDate:(NSDate*)value;
+
+- (NSString*)primitiveText;
+- (void)setPrimitiveText:(NSString*)value;
+
+- (FJCAnotationPhoto*)primitiveAnotationPhoto;
+- (void)setPrimitiveAnotationPhoto:(FJCAnotationPhoto*)value;
 
 - (FJCBook*)primitiveBook;
 - (void)setPrimitiveBook:(FJCBook*)value;

@@ -5,11 +5,10 @@
 
 const struct FJCAnotationPhotoAttributes FJCAnotationPhotoAttributes = {
 	.photoData = @"photoData",
-	.text = @"text",
 };
 
 const struct FJCAnotationPhotoRelationships FJCAnotationPhotoRelationships = {
-	.book = @"book",
+	.anotations = @"anotations",
 };
 
 @implementation FJCAnotationPhotoID
@@ -43,9 +42,16 @@ const struct FJCAnotationPhotoRelationships FJCAnotationPhotoRelationships = {
 
 @dynamic photoData;
 
-@dynamic text;
+@dynamic anotations;
 
-@dynamic book;
+- (NSMutableSet*)anotationsSet {
+	[self willAccessValueForKey:@"anotations"];
+
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"anotations"];
+
+	[self didAccessValueForKey:@"anotations"];
+	return result;
+}
 
 @end
 

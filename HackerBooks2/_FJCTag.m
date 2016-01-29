@@ -4,11 +4,12 @@
 #import "_FJCTag.h"
 
 const struct FJCTagAttributes FJCTagAttributes = {
-	.tag = @"tag",
+	.proxyForSorting = @"proxyForSorting",
+	.tagName = @"tagName",
 };
 
 const struct FJCTagRelationships FJCTagRelationships = {
-	.books = @"books",
+	.bookTags = @"bookTags",
 };
 
 @implementation FJCTagID
@@ -40,16 +41,18 @@ const struct FJCTagRelationships FJCTagRelationships = {
 	return keyPaths;
 }
 
-@dynamic tag;
+@dynamic proxyForSorting;
 
-@dynamic books;
+@dynamic tagName;
 
-- (NSMutableSet*)booksSet {
-	[self willAccessValueForKey:@"books"];
+@dynamic bookTags;
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"books"];
+- (NSMutableSet*)bookTagsSet {
+	[self willAccessValueForKey:@"bookTags"];
 
-	[self didAccessValueForKey:@"books"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"bookTags"];
+
+	[self didAccessValueForKey:@"bookTags"];
 	return result;
 }
 

@@ -4,7 +4,7 @@
 @import CoreData;
 
 extern const struct FJCAuthorAttributes {
-	__unsafe_unretained NSString *author;
+	__unsafe_unretained NSString *fullName;
 } FJCAuthorAttributes;
 
 extern const struct FJCAuthorRelationships {
@@ -22,9 +22,9 @@ extern const struct FJCAuthorRelationships {
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) FJCAuthorID* objectID;
 
-@property (nonatomic, strong) NSString* author;
+@property (nonatomic, strong) NSString* fullName;
 
-//- (BOOL)validateAuthor:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateFullName:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSSet *books;
 
@@ -42,8 +42,8 @@ extern const struct FJCAuthorRelationships {
 
 @interface _FJCAuthor (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSString*)primitiveAuthor;
-- (void)setPrimitiveAuthor:(NSString*)value;
+- (NSString*)primitiveFullName;
+- (void)setPrimitiveFullName:(NSString*)value;
 
 - (NSMutableSet*)primitiveBooks;
 - (void)setPrimitiveBooks:(NSMutableSet*)value;

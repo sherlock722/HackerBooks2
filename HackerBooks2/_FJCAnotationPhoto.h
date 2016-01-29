@@ -5,14 +5,13 @@
 
 extern const struct FJCAnotationPhotoAttributes {
 	__unsafe_unretained NSString *photoData;
-	__unsafe_unretained NSString *text;
 } FJCAnotationPhotoAttributes;
 
 extern const struct FJCAnotationPhotoRelationships {
-	__unsafe_unretained NSString *book;
+	__unsafe_unretained NSString *anotations;
 } FJCAnotationPhotoRelationships;
 
-@class FJCBook;
+@class FJCAnotation;
 
 @interface FJCAnotationPhotoID : NSManagedObjectID {}
 @end
@@ -27,13 +26,17 @@ extern const struct FJCAnotationPhotoRelationships {
 
 //- (BOOL)validatePhotoData:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSString* text;
+@property (nonatomic, strong) NSSet *anotations;
 
-//- (BOOL)validateText:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)anotationsSet;
 
-@property (nonatomic, strong) FJCBook *book;
+@end
 
-//- (BOOL)validateBook:(id*)value_ error:(NSError**)error_;
+@interface _FJCAnotationPhoto (AnotationsCoreDataGeneratedAccessors)
+- (void)addAnotations:(NSSet*)value_;
+- (void)removeAnotations:(NSSet*)value_;
+- (void)addAnotationsObject:(FJCAnotation*)value_;
+- (void)removeAnotationsObject:(FJCAnotation*)value_;
 
 @end
 
@@ -42,10 +45,7 @@ extern const struct FJCAnotationPhotoRelationships {
 - (NSData*)primitivePhotoData;
 - (void)setPrimitivePhotoData:(NSData*)value;
 
-- (NSString*)primitiveText;
-- (void)setPrimitiveText:(NSString*)value;
-
-- (FJCBook*)primitiveBook;
-- (void)setPrimitiveBook:(FJCBook*)value;
+- (NSMutableSet*)primitiveAnotations;
+- (void)setPrimitiveAnotations:(NSMutableSet*)value;
 
 @end

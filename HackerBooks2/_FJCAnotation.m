@@ -1,39 +1,43 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to FJCLocalization.m instead.
+// Make changes to FJCAnotation.m instead.
 
-#import "_FJCLocalization.h"
+#import "_FJCAnotation.h"
 
-const struct FJCLocalizationAttributes FJCLocalizationAttributes = {
+const struct FJCAnotationAttributes FJCAnotationAttributes = {
 	.address = @"address",
+	.creationDate = @"creationDate",
 	.latitude = @"latitude",
 	.longitude = @"longitude",
+	.modificationDate = @"modificationDate",
+	.text = @"text",
 };
 
-const struct FJCLocalizationRelationships FJCLocalizationRelationships = {
+const struct FJCAnotationRelationships FJCAnotationRelationships = {
+	.anotationPhoto = @"anotationPhoto",
 	.book = @"book",
 };
 
-@implementation FJCLocalizationID
+@implementation FJCAnotationID
 @end
 
-@implementation _FJCLocalization
+@implementation _FJCAnotation
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Localization" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"Anotation" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"Localization";
+	return @"Anotation";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"Localization" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"Anotation" inManagedObjectContext:moc_];
 }
 
-- (FJCLocalizationID*)objectID {
-	return (FJCLocalizationID*)[super objectID];
+- (FJCAnotationID*)objectID {
+	return (FJCAnotationID*)[super objectID];
 }
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
@@ -54,6 +58,8 @@ const struct FJCLocalizationRelationships FJCLocalizationRelationships = {
 }
 
 @dynamic address;
+
+@dynamic creationDate;
 
 @dynamic latitude;
 
@@ -94,6 +100,12 @@ const struct FJCLocalizationRelationships FJCLocalizationRelationships = {
 - (void)setPrimitiveLongitudeValue:(double)value_ {
 	[self setPrimitiveLongitude:@(value_)];
 }
+
+@dynamic modificationDate;
+
+@dynamic text;
+
+@dynamic anotationPhoto;
 
 @dynamic book;
 

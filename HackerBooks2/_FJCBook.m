@@ -4,17 +4,16 @@
 #import "_FJCBook.h"
 
 const struct FJCBookAttributes FJCBookAttributes = {
-	.creationBook = @"creationBook",
-	.modificationBook = @"modificationBook",
+	.lastRead = @"lastRead",
 	.title = @"title",
 };
 
 const struct FJCBookRelationships FJCBookRelationships = {
-	.anotationPhoto = @"anotationPhoto",
+	.anotations = @"anotations",
 	.authors = @"authors",
-	.localization = @"localization",
+	.bookCoverPhoto = @"bookCoverPhoto",
+	.bookTags = @"bookTags",
 	.pdf = @"pdf",
-	.tags = @"tags",
 };
 
 @implementation FJCBookID
@@ -46,13 +45,20 @@ const struct FJCBookRelationships FJCBookRelationships = {
 	return keyPaths;
 }
 
-@dynamic creationBook;
-
-@dynamic modificationBook;
+@dynamic lastRead;
 
 @dynamic title;
 
-@dynamic anotationPhoto;
+@dynamic anotations;
+
+- (NSMutableSet*)anotationsSet {
+	[self willAccessValueForKey:@"anotations"];
+
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"anotations"];
+
+	[self didAccessValueForKey:@"anotations"];
+	return result;
+}
 
 @dynamic authors;
 
@@ -65,20 +71,20 @@ const struct FJCBookRelationships FJCBookRelationships = {
 	return result;
 }
 
-@dynamic localization;
+@dynamic bookCoverPhoto;
 
-@dynamic pdf;
+@dynamic bookTags;
 
-@dynamic tags;
+- (NSMutableSet*)bookTagsSet {
+	[self willAccessValueForKey:@"bookTags"];
 
-- (NSMutableSet*)tagsSet {
-	[self willAccessValueForKey:@"tags"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"bookTags"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tags"];
-
-	[self didAccessValueForKey:@"tags"];
+	[self didAccessValueForKey:@"bookTags"];
 	return result;
 }
+
+@dynamic pdf;
 
 @end
 

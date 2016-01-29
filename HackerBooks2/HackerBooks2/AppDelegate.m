@@ -23,34 +23,35 @@
 -(void) createDummyData {
     
     
-    // Creo un libro de prueba2
-    /*FJCBook *book=[FJCBook bookWithTitle:@"Libro1"
-                                 context:self.model.context];*/
+    //Se crea una cola
+    //dispatch_queue_t  download = dispatch_queue_create("descarga JSON", 0);
     
-    //Se recupera la información de los libros del JSON
     
-    NSError *error;
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"books_readable" ofType:@"json"];
-    /*NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];*/
+        //Se recupera la información de los libros del JSON
     
-    NSData *myJSONData =[NSData dataWithContentsOfFile:filePath];
-
-    /*if(error) {
-        NSLog(@"Error reading file: %@", error.localizedDescription);
-    }*/
+        NSError *error;
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"books_readable" ofType:@"json"];
     
-    /*NSArray *arrayBooks = (NSArray *)[NSJSONSerialization JSONObjectWithData:[myJSON dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];*/
-
-    NSArray *arrayBooks = [NSJSONSerialization JSONObjectWithData:myJSONData options:0 error:&error];
+        NSLog(@"1");
     
-    for(NSDictionary *dictBook in arrayBooks){
-            
-            FJCBook * book = [FJCBook bookWithDictionary:dictBook
-                                               inContext:self.model.context];
+        NSData *myJSONData =[NSData dataWithContentsOfFile:filePath];
+    
+        /*if(error) {
+            NSLog(@"Error reading file: %@", error.localizedDescription);
+         }*/
         
-            NSLog(@"Carga de Libros con titulo %@",book.title);
+        NSArray *arrayBooks = [NSJSONSerialization JSONObjectWithData:myJSONData options:0 error:&error];
+    
+         NSLog(@"2");
+        
+        for(NSDictionary *dictBook in arrayBooks){
             
-    }
+            [FJCBook bookWithDictionary:dictBook
+                              inContext:self.model.context];
+            
+            //NSLog(@"Carga de Libros con titulo %@",book.title);
+            
+        }
     
 }
 
@@ -61,6 +62,8 @@
     // Inicializo el Stack de Core Data con el nombre del fichero del modelo
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"HackerBooks2Model"];
     
+    
+    //Se realiza la carga del JSON
     [self createDummyData];
     
     // Creo la window y tal y cual
@@ -71,7 +74,8 @@
     NSFetchRequest *r = [NSFetchRequest fetchRequestWithEntityName:[FJCBook entityName]];
     r.fetchBatchSize = 25;
     r.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:FJCBookAttributes.title ascending:YES selector:@selector(caseInsensitiveCompare:)],
-                          [NSSortDescriptor sortDescriptorWithKey:FJCBookAttributes.modificationBook ascending:NO]];
+                          [NSSortDescriptor sortDescriptorWithKey:FJCBookAttributes.lastRead
+                                                        ascending:NO]];
     
     // NSFetchedResultsController
     NSFetchedResultsController *fc = [[NSFetchedResultsController alloc] initWithFetchRequest:r managedObjectContext:self.model.context sectionNameKeyPath:nil cacheName:nil];

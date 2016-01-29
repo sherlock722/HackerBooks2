@@ -4,14 +4,15 @@
 @import CoreData;
 
 extern const struct FJCTagAttributes {
-	__unsafe_unretained NSString *tag;
+	__unsafe_unretained NSString *proxyForSorting;
+	__unsafe_unretained NSString *tagName;
 } FJCTagAttributes;
 
 extern const struct FJCTagRelationships {
-	__unsafe_unretained NSString *books;
+	__unsafe_unretained NSString *bookTags;
 } FJCTagRelationships;
 
-@class FJCBook;
+@class FJCBookTag;
 
 @interface FJCTagID : NSManagedObjectID {}
 @end
@@ -22,30 +23,37 @@ extern const struct FJCTagRelationships {
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) FJCTagID* objectID;
 
-@property (nonatomic, strong) NSString* tag;
+@property (nonatomic, strong) NSString* proxyForSorting;
 
-//- (BOOL)validateTag:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateProxyForSorting:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSSet *books;
+@property (nonatomic, strong) NSString* tagName;
 
-- (NSMutableSet*)booksSet;
+//- (BOOL)validateTagName:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) NSSet *bookTags;
+
+- (NSMutableSet*)bookTagsSet;
 
 @end
 
-@interface _FJCTag (BooksCoreDataGeneratedAccessors)
-- (void)addBooks:(NSSet*)value_;
-- (void)removeBooks:(NSSet*)value_;
-- (void)addBooksObject:(FJCBook*)value_;
-- (void)removeBooksObject:(FJCBook*)value_;
+@interface _FJCTag (BookTagsCoreDataGeneratedAccessors)
+- (void)addBookTags:(NSSet*)value_;
+- (void)removeBookTags:(NSSet*)value_;
+- (void)addBookTagsObject:(FJCBookTag*)value_;
+- (void)removeBookTagsObject:(FJCBookTag*)value_;
 
 @end
 
 @interface _FJCTag (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSString*)primitiveTag;
-- (void)setPrimitiveTag:(NSString*)value;
+- (NSString*)primitiveProxyForSorting;
+- (void)setPrimitiveProxyForSorting:(NSString*)value;
 
-- (NSMutableSet*)primitiveBooks;
-- (void)setPrimitiveBooks:(NSMutableSet*)value;
+- (NSString*)primitiveTagName;
+- (void)setPrimitiveTagName:(NSString*)value;
+
+- (NSMutableSet*)primitiveBookTags;
+- (void)setPrimitiveBookTags:(NSMutableSet*)value;
 
 @end

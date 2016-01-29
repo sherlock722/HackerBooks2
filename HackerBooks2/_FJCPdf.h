@@ -5,6 +5,7 @@
 
 extern const struct FJCPdfAttributes {
 	__unsafe_unretained NSString *pdfData;
+	__unsafe_unretained NSString *urlString;
 } FJCPdfAttributes;
 
 extern const struct FJCPdfRelationships {
@@ -26,6 +27,10 @@ extern const struct FJCPdfRelationships {
 
 //- (BOOL)validatePdfData:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) NSString* urlString;
+
+//- (BOOL)validateUrlString:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) FJCBook *book;
 
 //- (BOOL)validateBook:(id*)value_ error:(NSError**)error_;
@@ -36,6 +41,9 @@ extern const struct FJCPdfRelationships {
 
 - (NSData*)primitivePdfData;
 - (void)setPrimitivePdfData:(NSData*)value;
+
+- (NSString*)primitiveUrlString;
+- (void)setPrimitiveUrlString:(NSString*)value;
 
 - (FJCBook*)primitiveBook;
 - (void)setPrimitiveBook:(FJCBook*)value;

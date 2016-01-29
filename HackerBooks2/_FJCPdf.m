@@ -5,6 +5,7 @@
 
 const struct FJCPdfAttributes FJCPdfAttributes = {
 	.pdfData = @"pdfData",
+	.urlString = @"urlString",
 };
 
 const struct FJCPdfRelationships FJCPdfRelationships = {
@@ -41,6 +42,8 @@ const struct FJCPdfRelationships FJCPdfRelationships = {
 }
 
 @dynamic pdfData;
+
+@dynamic urlString;
 
 @dynamic book;
 
